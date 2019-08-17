@@ -3,7 +3,6 @@ package com.how2java.tmall.service.impl;
 import com.how2java.tmall.mapper.CategoryMapper;
 import com.how2java.tmall.pojo.Category;
 import com.how2java.tmall.service.CategoryService;
-import com.how2java.tmall.util.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,13 +15,9 @@ public class CategoryServiceImpl implements CategoryService {
 
 
     @Override
-    public int total() {
-        return categoryMapper.total();
-    }
+    public List<Category> list() {
 
-    @Override
-    public List<Category> list(Page page) {
-        return categoryMapper.list(page);
+        return categoryMapper.list();
     }
 
     @Override
@@ -42,7 +37,7 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public void update(Category category) {
-       categoryMapper.update(category);
+        categoryMapper.update(category);
 
     }
 }

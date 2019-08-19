@@ -280,7 +280,7 @@
             <a class="buyLink" href="forebuyone?pid=${p.id}">
                 <button class="buyButton">立即购买</button>
             </a>
-            <a href="#nowhere" class="addCartLink">
+            <a href="foreaddCart?pid=${p.id}&num=${num}" class="addCartLink">
                 <button class="addCartButton"><span class="glyphicon glyphicon-shopping-cart"></span>加入购物车</button>
             </a>
         </div>

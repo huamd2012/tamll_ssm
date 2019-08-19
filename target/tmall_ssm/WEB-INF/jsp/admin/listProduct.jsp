@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@include file="../include/admin/adminHeader.jsp"%>
 <%@include file="../include/admin/adminNavigator.jsp"%>
@@ -63,9 +64,9 @@
                     <td>${p.id}</td>
                     <td>
 
-                            <%--<c:if test="${!empty p.firstProductImage}">--%>
-                            <%--<img width="40px" src="img/productSingle/${p.firstProductImage.id}.jpg">--%>
-                            <%--</c:if>--%>
+                        <c:if test="${!empty p.firstProductImage}">
+                            <img width="40px" src="img/productSingle/${p.firstProductImage.id}.jpg">
+                        </c:if>
 
                     </td>
                     <td>${p.name}</td>

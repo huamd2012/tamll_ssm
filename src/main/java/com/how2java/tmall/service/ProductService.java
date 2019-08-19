@@ -2,6 +2,7 @@ package com.how2java.tmall.service;
 
 import java.util.List;
 
+import com.how2java.tmall.pojo.Category;
 import com.how2java.tmall.pojo.Product;
 
 public interface ProductService {
@@ -16,4 +17,10 @@ public interface ProductService {
     List list(int cid);
 
     void setFirstProductImage(Product p);
+
+    void fill(List<Category> cs);
+
+    void fill(Category c);
+
+    void fillByRow(List<Category> cs);
 }

@@ -11,6 +11,8 @@ public class PropertyValue {
     /*非数据库字段*/
     private Property property;
 
+
+
     public Property getProperty() {
         return property;
     }

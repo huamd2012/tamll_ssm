@@ -42,8 +42,8 @@ public class OrderItemServiceImpl implements OrderItemService {
         return result;
     }
 
-    public List<OrderItem> list(){
-        OrderItemExample example =new OrderItemExample();
+    public List<OrderItem> list() {
+        OrderItemExample example = new OrderItemExample();
         example.setOrderByClause("id desc");
         return orderItemMapper.selectByExample(example);
 
@@ -57,17 +57,17 @@ public class OrderItemServiceImpl implements OrderItemService {
     }
 
     public void fill(Order o) {
-        OrderItemExample example =new OrderItemExample();
+        OrderItemExample example = new OrderItemExample();
         example.createCriteria().andOidEqualTo(o.getId());
         example.setOrderByClause("id desc");
-        List<OrderItem> ois =orderItemMapper.selectByExample(example);
+        List<OrderItem> ois = orderItemMapper.selectByExample(example);
         setProduct(ois);
 
         float total = 0;
         int totalNumber = 0;
         for (OrderItem oi : ois) {
-            total+=oi.getNumber()*oi.getProduct().getPromotePrice();
-            totalNumber+=oi.getNumber();
+            total += oi.getNumber() * oi.getProduct().getPromotePrice();
+            totalNumber += oi.getNumber();
         }
         o.setTotal(total);
         o.setTotalNumber(totalNumber);
@@ -75,8 +75,8 @@ public class OrderItemServiceImpl implements OrderItemService {
 
     }
 
-    public void setProduct(List<OrderItem> ois){
-        for (OrderItem oi: ois) {
+    public void setProduct(List<OrderItem> ois) {
+        for (OrderItem oi : ois) {
             setProduct(oi);
         }
     }
@@ -86,6 +86,16 @@ public class OrderItemServiceImpl implements OrderItemService {
         oi.setProduct(p);
     }
 
-    ;
+    @Override
+    public int getSaleCount(int pid) {
+        OrderItemExample example = new OrderItemExample();
+        example.createCriteria().andPidEqualTo(pid);
+        List<OrderItem> ois = orderItemMapper.selectByExample(example);
+        int result = 0;
+        for (OrderItem oi : ois) {
+            result += oi.getNumber();
+        }
+        return result;
+    }
 
 }
